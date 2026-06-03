@@ -94,12 +94,18 @@ export class MultiUnitButton extends Component {
 
         if (payload.isBaseUnit) {
             this.line.price_type = "original";
+            delete this.line.pos_multi_unit;
             this.line.setQuantity(1);
             this.line.setUnitPrice(payload.price);
         } else {
             this.line.setQuantity(payload.qty, true);
-            this.line.setUnitPrice(payload.price);
+            this.line.setUnitPrice(payload.price / payload.qty);
             this.line.price_type = "manual";
+            this.line.pos_multi_unit = {
+                name: payload.name,
+                qty: payload.qty,
+                price: payload.price,
+            };
         }
     }
 }
