@@ -23,28 +23,29 @@ El modulo esta pensado para productos que se venden en unidad base y tambien en 
 ## Archivos principales
 
 ```text
-pos_multi_unit/
-├── __init__.py
-├── __manifest__.py
-├── models/
-│   ├── __init__.py
-│   ├── product_template.py
-│   └── product_uom.py
-├── views/
-│   └── product_uom_views.xml
-└── static/
-    └── src/
-        ├── multi_unit_button.js
-        ├── multi_unit_button.xml
-        ├── multi_unit_popup.js
-        ├── multi_unit_popup.xml
-        ├── orderline_patch.js
-        └── orderline_patch.xml
+.
+|-- README.md
+|-- __init__.py
+|-- __manifest__.py
+|-- models/
+|   |-- __init__.py
+|   |-- product_template.py
+|   `-- product_uom.py
+|-- views/
+|   `-- product_uom_views.xml
+`-- static/
+    `-- src/
+        |-- multi_unit_button.js
+        |-- multi_unit_button.xml
+        |-- multi_unit_popup.js
+        |-- multi_unit_popup.xml
+        |-- orderline_patch.js
+        `-- orderline_patch.xml
 ```
 
 ## Instalacion
 
-Copiar la carpeta `pos_multi_unit` al directorio de addons personalizados de Odoo 19:
+Copiar este repositorio como carpeta `pos_multi_unit` al directorio de addons personalizados de Odoo 19:
 
 ```bash
 cp -r pos_multi_unit /path/to/custom/addons/
