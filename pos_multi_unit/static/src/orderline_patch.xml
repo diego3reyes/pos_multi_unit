@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="pos_multi_unit.OrderlinePatch" t-inherit="point_of_sale.Orderline" t-inherit-mode="extension">
+        <xpath expr="//ul[hasclass('info-list')]/t[@t-slot='default']" position="before">
+            <MultiUnitButton
+                t-if="props.mode === 'display' &amp;&amp; line.isSelected()"
+                line="line"
+            />
+        </xpath>
+    </t>
+</templates>

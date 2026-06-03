@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="pos_multi_unit.MultiUnitPopup">
+        <Dialog title="title" footer="false" size="'lg'" bodyClass="'d-flex flex-column gap-2 border-bottom'">
+            <button
+                class="selection-item d-flex align-items-center justify-content-between btn btn-lg btn-outline-primary w-100 p-3 text-start"
+                t-on-click="() => this.selectOption(props.baseUnit)"
+            >
+                <div class="d-flex flex-column">
+                    <span class="fw-bold" t-esc="props.baseUnit.name"/>
+                    <span class="text-muted" t-esc="props.baseUnit.description"/>
+                </div>
+                <span class="fw-bold text-success" t-esc="formatPrice(props.baseUnit.price)"/>
+            </button>
+
+            <button
+                t-foreach="props.packagings"
+                t-as="pkg"
+                t-key="pkg.id"
+                class="selection-item d-flex align-items-center justify-content-between btn btn-lg btn-outline-success w-100 p-3 text-start"
+                t-on-click="() => this.selectOption(pkg)"
+            >
+                <div class="d-flex flex-column">
+                    <span class="fw-bold" t-esc="pkg.name"/>
+                    <span class="text-muted" t-esc="pkg.description"/>
+                </div>
+                <span class="fw-bold text-success" t-esc="formatPrice(pkg.price)"/>
+            </button>
+        </Dialog>
+    </t>
+</templates>

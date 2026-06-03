@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_template_form_view_inherit_pos_multi_unit" model="ir.ui.view">
+        <field name="name">product.template.form.inherit.pos.multi.unit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='inventory']/group[@name='inventory']" position="inside">
+                <group
+                    string="Presentaciones POS"
+                    name="pos_multi_unit_packagings"
+                    invisible="is_product_variant or product_variant_count &gt; 1 or type == 'combo'"
+                    groups="uom.group_uom"
+                >
+                    <field
+                        name="pos_product_uom_ids"
+                        nolabel="1"
+                        context="{'default_product_id': product_variant_id}"
+                    >
+                        <list editable="bottom">
+                            <field name="currency_id" column_invisible="1"/>
+                            <field name="uom_id"/>
+                            <field name="barcode"/>
+                            <field name="available_in_pos"/>
+                            <field
+                                name="pos_price"
+                                widget="monetary"
+                                options="{'currency_field': 'currency_id'}"
+                            />
+                            <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+                        </list>
+                        <form>
+                            <group>
+                                <field name="currency_id" invisible="1"/>
+                                <field name="product_id" readonly="1"/>
+                                <field name="uom_id"/>
+                                <field name="barcode"/>
+                                <field name="available_in_pos"/>
+                                <field
+                                    name="pos_price"
+                                    widget="monetary"
+                                    options="{'currency_field': 'currency_id'}"
+                                />
+                                <field name="company_id" groups="base.group_multi_company"/>
+                            </group>
+                        </form>
+                    </field>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_product_form_view_inherit_pos_multi_unit" model="ir.ui.view">
+        <field name="name">product.product.form.inherit.pos.multi.unit</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='inventory']/group[@name='inventory']" position="inside">
+                <group
+                    string="Presentaciones POS"
+                    name="pos_multi_unit_variant_packagings"
+                    invisible="type == 'combo'"
+                    groups="uom.group_uom"
+                >
+                    <field
+                        name="product_uom_ids"
+                        nolabel="1"
+                        context="{'default_product_id': id}"
+                    >
+                        <list editable="bottom">
+                            <field name="currency_id" column_invisible="1"/>
+                            <field name="uom_id"/>
+                            <field name="barcode"/>
+                            <field name="available_in_pos"/>
+                            <field
+                                name="pos_price"
+                                widget="monetary"
+                                options="{'currency_field': 'currency_id'}"
+                            />
+                            <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+                        </list>
+                        <form>
+                            <group>
+                                <field name="currency_id" invisible="1"/>
+                                <field name="product_id" readonly="1"/>
+                                <field name="uom_id"/>
+                                <field name="barcode"/>
+                                <field name="available_in_pos"/>
+                                <field
+                                    name="pos_price"
+                                    widget="monetary"
+                                    options="{'currency_field': 'currency_id'}"
+                                />
+                                <field name="company_id" groups="base.group_multi_company"/>
+                            </group>
+                        </form>
+                    </field>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
