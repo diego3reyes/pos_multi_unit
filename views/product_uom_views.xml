@@ -5,10 +5,13 @@
         <field name="model">product.template</field>
         <field name="inherit_id" ref="product.product_template_form_view"/>
         <field name="arch" type="xml">
-            <xpath expr="//page[@name='inventory']/group[@name='inventory']" position="inside">
+            <xpath expr="//page[@name='inventory']/group[@name='inventory']/group[@name='group_lots_and_weight']" position="after">
+                <newline/>
                 <group
-                    string="Presentaciones POS"
+                    string="Multi-unidad"
                     name="pos_multi_unit_packagings"
+                    colspan="2"
+                    col="1"
                     invisible="is_product_variant or product_variant_count &gt; 1 or type == 'combo'"
                     groups="uom.group_uom"
                 >
@@ -55,10 +58,13 @@
         <field name="model">product.product</field>
         <field name="inherit_id" ref="product.product_normal_form_view"/>
         <field name="arch" type="xml">
-            <xpath expr="//page[@name='inventory']/group[@name='inventory']" position="inside">
+            <xpath expr="//page[@name='inventory']/group[@name='inventory']/group[@name='group_lots_and_weight']" position="after">
+                <newline/>
                 <group
-                    string="Presentaciones POS"
+                    string="Multi-unidad"
                     name="pos_multi_unit_variant_packagings"
+                    colspan="2"
+                    col="1"
                     invisible="type == 'combo'"
                     groups="uom.group_uom"
                 >
