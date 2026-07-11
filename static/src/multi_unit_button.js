@@ -98,14 +98,18 @@ export class MultiUnitButton extends Component {
             this.line.setQuantity(1);
             this.line.setUnitPrice(payload.price);
         } else {
-            this.line.setQuantity(payload.qty, true);
-            this.line.setUnitPrice(payload.price / payload.qty);
             this.line.price_type = "manual";
             this.line.pos_multi_unit = {
                 name: payload.name,
                 qty: payload.qty,
                 price: payload.price,
             };
+            if (this.line.setMultiUnitQuantity) {
+                this.line.setMultiUnitQuantity(1, true);
+            } else {
+                this.line.setQuantity(payload.qty, true);
+            }
+            this.line.setUnitPrice(payload.price / payload.qty);
         }
     }
 }
